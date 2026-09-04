@@ -1117,11 +1117,16 @@ button:disabled {
 
 /* Escaneo manual: controles de ubicacion con la misma jerarquia visual
    que Playa/Bloque y sin romper la grilla en pantallas chicas. */
+/* Asignación Manual: Carril y Posición forman la fila de reemplazo
+   de la configuración automática y quedan dentro del mismo grupo de
+   configuración. Así no alteran la posición estructural del switch. */
 .manual-location-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     margin-top: 13px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .manual-scan-container {
@@ -1129,11 +1134,20 @@ button:disabled {
 }
 
 /* Asignación Manual conserva exactamente la columna derecha del switch
-   de Asignar a la inversa, aunque Numero inicial quede oculto. */
+   de Asignar a la inversa, tanto en OFF como en ON. */
 #controlesInicioRow #escaneoManualContainer,
 #controlesInicioRow #inversaContainer {
     grid-column: 2;
     grid-row: 1;
+    align-self: start;
+}
+
+#controlesInicioRow #escaneoManualContainer .switch,
+#controlesInicioRow #inversaContainer .switch {
+    display: block;
+    width: 100%;
+    height: 48px;
+    margin: 0;
 }
 
 .manual-location-row input {
