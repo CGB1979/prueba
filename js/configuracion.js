@@ -152,6 +152,9 @@ function aplicarModoEscaneoManual() {
 
     if (manualLocationRow) manualLocationRow.classList.toggle("hidden", !activo);
 
+    const controlesInicioRow = document.getElementById("controlesInicioRow");
+    if (controlesInicioRow) controlesInicioRow.classList.toggle("manual-active", activo);
+
     // El titulo general sigue siendo "Tipo de numeracion"; "Escaneo Manual"
     // es el nombre del sector con su switch, no reemplaza ese encabezado.
     if (tipoNumeracionLabel) tipoNumeracionLabel.textContent = "Tipo de numeracion";

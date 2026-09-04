@@ -1115,6 +1115,12 @@ button:disabled {
     margin-top: 0;
 }
 
+/* Conserva la primera columna reservada cuando la asignación manual está activa. */
+#controlesInicioRow.manual-active #numeroInicialContainer {
+    visibility: hidden;
+    display: block;
+}
+
 .manual-location-row input {
     height: 48px;
     box-sizing: border-box;

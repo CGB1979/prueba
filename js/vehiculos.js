@@ -134,13 +134,16 @@ function mostrarVehiculos() {
                 if (ca !== cb) return ca - cb;
                 const pa = a.manual === true ? Number(a.posicionManual) : Number(a.posicion);
                 const pb = b.manual === true ? Number(b.posicionManual) : Number(b.posicion);
-                return pa - pb;
+                if (pa !== pb) return pa - pb;
+                return String(a.chasis || '').localeCompare(String(b.chasis || ''), undefined, { numeric: true, sensitivity: "base" });
             }
 
-            return (
-                Number(a.posicion) -
-                Number(b.posicion)
-            );
+            const pa = Number(a.posicion);
+            const pb = Number(b.posicion);
+            const aVal = Number.isFinite(pa) ? pa : Number.MAX_SAFE_INTEGER;
+            const bVal = Number.isFinite(pb) ? pb : Number.MAX_SAFE_INTEGER;
+            if (aVal !== bVal) return aVal - bVal;
+            return String(a.chasis || '').localeCompare(String(b.chasis || ''), undefined, { numeric: true, sensitivity: "base" });
 
         });
 
