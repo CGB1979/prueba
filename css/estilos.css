@@ -1650,6 +1650,45 @@ button:active {
     font-weight: 700;
 }
 
+/* Fix: alinear ambos switches (Asignar a la inversa / Asignación Manual) exactamente igual */
+#controlesInicioRow #escaneoManualContainer,
+#controlesInicioRow #inversaContainer {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;           /* centrar verticalmente en la celda de la grilla */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     /* asegura el mismo centrado vertical */
+  gap: 6px;                    /* separación entre label y switch */
+  box-sizing: border-box;
+}
+
+/* Normalizar label y evitar márgenes inesperados */
+#controlesInicioRow #escaneoManualContainer > label:first-child,
+#controlesInicioRow #inversaContainer > label:first-child {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* Forzar que el switch ocupe todo el ancho y mantenga la altura esperada */
+#controlesInicioRow #escaneoManualContainer .switch,
+#controlesInicioRow #inversaContainer .switch {
+  display: block;
+  width: 100%;
+  height: 48px;
+  margin: 0;
+  align-self: stretch;
+}
+
+/* Asegurar que el thumb/texto del slider no cambie la altura al hacer toggle */
+#controlesInicioRow .switch .slider,
+#controlesInicioRow .switch .slider:before {
+  height: 48px;
+  top: 4px; /* mantiene la misma posición vertical interna */
+}
+
 /* Si tu JS muestra/oculta con otra técnica (elimina nodos o usa estilos inline),
    estas reglas pueden necesitar ajustarse. */
 
