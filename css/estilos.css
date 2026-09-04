@@ -1120,6 +1120,32 @@ button:disabled {
 /* Asignación Manual: Carril y Posición forman la fila de reemplazo
    de la configuración automática y quedan dentro del mismo grupo de
    configuración. Así no alteran la posición estructural del switch. */
+
+/* Slot estructural fijo: numeración automática y asignación manual
+   ocupan la misma altura; el switch queda en la misma coordenada. */
+.numeracion-slot {
+    position: relative;
+    min-height: 126px;
+}
+.numeracion-automatica {
+    display: block;
+}
+.numeracion-slot #manualLocationRow {
+    margin-top: 0;
+    min-height: 126px;
+    align-items: start;
+}
+.numeracion-slot #manualLocationRow.hidden {
+    display: none !important;
+}
+.numeracion-slot #manualLocationRow:not(.hidden) {
+    display: grid;
+}
+.numeracion-slot #manualLocationRow input {
+    height: 48px;
+    box-sizing: border-box;
+}
+
 .manual-location-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1556,29 +1582,4 @@ button:active {
 
 .danger-outline:hover {
     background: var(--ui-red-soft) !important;
-}
-
-/* =========================================================
-   AJUSTE FINAL — ASIGNACIÓN MANUAL
-   Solo presentación. Mantiene fijo el bloque de control
-   de la derecha aunque se reemplace la numeración por
-   Carril / Posición.
-   ========================================================= */
-.manual-location-row {
-    margin-top: 0;
-    min-height: 115px;
-    align-items: start;
-}
-
-#controlesInicioRow #escaneoManualContainer,
-#controlesInicioRow #inversaContainer {
-    grid-column: 2;
-    grid-row: 1;
-    align-self: start;
-    justify-self: stretch;
-}
-
-#controlesInicioRow #escaneoManualContainer .switch,
-#controlesInicioRow #inversaContainer .switch {
-    margin-top: 0;
 }
