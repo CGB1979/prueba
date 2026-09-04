@@ -111,56 +111,46 @@ function actualizarControlesPlaya() {
     const modoActual = obtenerModoNumeracion();
     const manual = typeof obtenerEscaneoManual === "function" && obtenerEscaneoManual() && modoActual === "continua";
 
+    // Primero sincronizamos la visibilidad del sector inferior. Esto evita
+    // que Fila quede accidentalmente junto al switch de Escaneo Manual.
     if (typeof aplicarModoEscaneoManual === "function") {
         aplicarModoEscaneoManual();
     }
 
-    if (manual) {
-        if (esJ) {
-            // El modo manual tambien reemplaza la logica automatica en playas especiales.
-        }
-        return;
-    }
     const inversaControl = document.getElementById("asignarInversa");
 
     if (inversaControl) {
-
-        // En playas normales, Continua no admite asignacion inversa.
-        // Las playas especiales conservan su logica propia de inversion.
-        const habilitada = esJ || modoActual !== "continua";
-
+        // Asignar a la inversa solo se ofrece en Pares/Impares.
+        // Continua usa el mismo sector para Escaneo Manual.
+        const habilitada = modoActual !== "continua" && !manual;
         inversaControl.disabled = !habilitada;
 
         if (!habilitada && inversaControl.checked) {
             inversaControl.checked = false;
         }
+    }
 
+    // En modo manual no hay ninguna configuracion automatica adicional.
+    if (manual) {
+        if (typeof aplicarModoEscaneoManual === "function") {
+            aplicarModoEscaneoManual();
+        }
+        return;
     }
 
     if (!esJ) {
-
         organizarControlesInicio(false);
-
         numeroInicialContainer.classList.remove("hidden");
         filaInicialContainer.classList.add("hidden");
-
         numberingHelp.classList.remove("editable-j");
-
         return;
-
     }
 
     const modo = obtenerModoNumeracion();
 
-    // En playas especiales tambien debe mostrarse el numero inicial,
-    // igual que en las playas normales. Este valor indica el carril
-    // desde el que comienza la asignacion.
     organizarControlesInicio(modo === "porFila");
     numeroInicialContainer.classList.remove("hidden");
 
-    // En modo "Por fila" se muestra ademas la fila de inicio,
-    // ubicada junto al numero inicial para conservar la misma altura
-    // y armonia visual de la configuracion.
     if (modo === "porFila") {
         filaInicialContainer.classList.remove("hidden");
     } else {

@@ -88,22 +88,43 @@ function aplicarModoEscaneoManual() {
     const manual = obtenerEscaneoManual();
     const modo = obtenerModoNumeracion();
     const esContinua = modo === "continua";
+    const inversaContainer = document.getElementById("inversaContainer");
 
+    // El selector del sector inferior cambia segun el tipo de numeracion:
+    // Continua -> Escaneo Manual | Pares/Impares -> Asignar a la inversa.
     if (escaneoManualContainer) {
         escaneoManualContainer.classList.toggle("hidden", !esContinua);
     }
+    if (inversaContainer) {
+        inversaContainer.classList.toggle("hidden", esContinua);
+    }
+
+    // Escaneo Manual solo puede existir sobre Continua. Si se cambia a
+    // Pares/Impares, se desactiva para que nunca queden dos modos activos.
     if (escaneoManual && !esContinua) {
         escaneoManual.checked = false;
     }
 
     const activo = manual && esContinua;
+
+    // En modo manual se reemplaza visualmente toda la configuracion
+    // automatica por Carril + Posicion. La fila manual esta ubicada
+    // debajo de Playa/Bloque, no debajo del selector ON/OFF.
     if (numberingOptions) numberingOptions.classList.toggle("hidden", activo);
     if (numberingHelp) numberingHelp.classList.toggle("hidden", activo);
     if (numeroInicialContainer) numeroInicialContainer.classList.toggle("hidden", activo);
-    if (filaInicialContainer) filaInicialContainer.classList.toggle("hidden", activo);
-    if (document.getElementById("inversaContainer")) document.getElementById("inversaContainer").classList.toggle("hidden", activo || !esContinua);
+
+    // Fila pertenece exclusivamente a Playa especial + Por fila y nunca
+    // debe quedar visible junto al selector de Escaneo Manual.
+    const esJ = typeof esPlayaEspecial === "function" && esPlayaEspecial(playaSelect.value);
+    const mostrarFila = !activo && esJ && modo === "porFila";
+    if (filaInicialContainer) filaInicialContainer.classList.toggle("hidden", !mostrarFila);
+
     if (manualLocationRow) manualLocationRow.classList.toggle("hidden", !activo);
-    if (tipoNumeracionLabel) tipoNumeracionLabel.textContent = activo ? "Escaneo Manual" : "Tipo de numeracion";
+
+    // El titulo general sigue siendo "Tipo de numeracion"; "Escaneo Manual"
+    // es el nombre del sector con su switch, no reemplaza ese encabezado.
+    if (tipoNumeracionLabel) tipoNumeracionLabel.textContent = "Tipo de numeracion";
 
     if (activo) {
         if (manualCarril && (!manualCarril.value || Number(manualCarril.value) < 1)) manualCarril.value = 1;

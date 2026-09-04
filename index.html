@@ -81,6 +81,10 @@
 <option value="b5">5</option>
 </select></div>
 </div>
+<div class="manual-location-row hidden" id="manualLocationRow">
+<div class="start-number-container"><label for="manualCarril">Carril</label><input type="number" id="manualCarril" min="1" step="1" value="1" inputmode="numeric" /></div>
+<div class="start-number-container"><label for="manualPosicion">Posicion</label><input type="number" id="manualPosicion" min="1" step="1" value="1" inputmode="numeric" /></div>
+</div>
 <div class="form-group" id="configNumeracionGroup"><!-- EDITABLE: nombre de esta opcion --> <label id="tipoNumeracionLabel">Tipo de numeracion</label>
 <div class="numbering-options" id="numberingOptions">
 <div class="numbering-option"><input type="radio" name="modoNumeracion" id="modoContinua" value="continua" />  <!-- EDITABLE: texto de la opcion --> <label for="modoContinua">Continua</label></div>
@@ -100,10 +104,6 @@
 <option value="4">Fila 4</option>
 <option value="5">Fila 5</option>
 </select></div>
-</div>
-<div class="manual-location-row hidden" id="manualLocationRow">
-<div class="start-number-container"><label for="manualCarril">Carril</label><input type="number" id="manualCarril" min="1" step="1" value="1" inputmode="numeric" /></div>
-<div class="start-number-container"><label for="manualPosicion">Posicion</label><input type="number" id="manualPosicion" min="1" step="1" value="1" inputmode="numeric" /></div>
 </div>
 <!-- EDITABLE: texto del boton --> <button class="btn-primary big-button" onclick="abrirScanner()"> ESCANEAR VEHiCULO </button>
 <!-- BOTON REBOTADOR -->
