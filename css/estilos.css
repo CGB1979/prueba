@@ -1184,6 +1184,9 @@ button:disabled {
 #controlesInicioRow.manual-active #escaneoManualContainer {
     transform: translateY(48px);
 }
+#controlesInicioRow.manual-active {
+    padding-bottom: 48px;
+}
 
 .manual-location-row input {
     height: 48px;
