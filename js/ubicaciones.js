@@ -356,7 +356,7 @@ function actualizarPreviewCambioUbicacion() {
                 "Ingrese una carril y una ubicacion validas.";
 
             hint.style.color =
-                "#dc3545";
+                "#dc2626";
 
             return;
 
@@ -390,7 +390,7 @@ function actualizarPreviewCambioUbicacion() {
                 "Esta ubicacion ya esta ocupada. Elija otra.";
 
             hint.style.color =
-                "#dc3545";
+                "#dc2626";
 
         } else {
 
@@ -399,7 +399,7 @@ function actualizarPreviewCambioUbicacion() {
                 "La ubicacion esta disponible.";
 
             hint.style.color =
-                "#198754";
+                "#10b981";
 
         }
 
@@ -453,7 +453,7 @@ function actualizarPreviewCambioUbicacion() {
             "Este numero ya esta ocupado. Elija otro numero.";
 
         hint.style.color =
-            "#dc3545";
+            "#dc2626";
 
     } else {
 
@@ -462,7 +462,7 @@ function actualizarPreviewCambioUbicacion() {
             "El numero esta disponible.";
 
         hint.style.color =
-            "#198754";
+            "#10b981";
 
     }
 
