@@ -50,6 +50,36 @@ const manualPosicion = document.getElementById("manualPosicion");
 const numberingOptions = document.getElementById("numberingOptions");
 const tipoNumeracionLabel = document.getElementById("tipoNumeracionLabel");
 
+function cargarListasUbicacionCentralizadas() {
+    const crearOpciones = (valores, valorVacio = "") => {
+        return valores.map(valor => {
+            const option = document.createElement("option");
+            option.value = valor;
+            option.textContent = valor;
+            return option;
+        });
+    };
+
+    if (playaSelect) {
+        playaSelect.replaceChildren(new Option("", ""), ...crearOpciones(PLAYAS_DISPONIBLES));
+    }
+    if (bloqueSelect) {
+        bloqueSelect.replaceChildren(new Option("", ""), ...crearOpciones(BLOQUES_DISPONIBLES));
+    }
+
+    const cambioPlaya = document.getElementById("cambioPlaya");
+    if (cambioPlaya) {
+        cambioPlaya.replaceChildren(...crearOpciones(PLAYAS_DISPONIBLES));
+    }
+
+    const cambioBloque = document.getElementById("cambioBloque");
+    if (cambioBloque) {
+        cambioBloque.replaceChildren(...crearOpciones(BLOQUES_DISPONIBLES));
+    }
+}
+
+cargarListasUbicacionCentralizadas();
+
 playaSelect.addEventListener("change", function() {
 
     actualizarOpcionesPlaya();
