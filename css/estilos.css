@@ -1133,6 +1133,7 @@ button:disabled {
 .numeracion-slot #manualLocationRow {
     margin-top: 0;
     min-height: 126px;
+    height: 126px;
     align-items: start;
 }
 .numeracion-slot #manualLocationRow.hidden {
@@ -1150,7 +1151,7 @@ button:disabled {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-top: 13px;
+    margin-top: 0;
     width: 100%;
     box-sizing: border-box;
 }
