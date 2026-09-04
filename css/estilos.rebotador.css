@@ -1557,3 +1557,11 @@ button:active {
 .danger-outline:hover {
     background: var(--ui-red-soft) !important;
 }
+
+/* Los botones de carga de Excel mantienen texto blanco sobre cualquier estado. */
+.excel-action-button,
+.excel-action-button:hover:not(:disabled),
+.excel-action-button:disabled,
+#btnBuscarExcel.excel-cargado {
+    color: #fff !important;
+}
