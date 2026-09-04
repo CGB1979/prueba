@@ -1177,6 +1177,14 @@ button:disabled {
     margin: 0;
 }
 
+/* Cuando se activa Asignacion Manual, el bloque automatico de la izquierda
+   desaparece y el contenedor derecho pierde exactamente 48px de referencia.
+   Compensamos solo en ON para que el titulo + switch queden en la misma Y
+   que Asignar a la inversa en OFF. */
+#controlesInicioRow.manual-active #escaneoManualContainer {
+    transform: translateY(48px);
+}
+
 .manual-location-row input {
     height: 48px;
     box-sizing: border-box;
