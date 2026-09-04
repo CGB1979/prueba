@@ -143,6 +143,7 @@ function aplicarModoEscaneoManual() {
     if (numberingOptions) numberingOptions.classList.toggle("hidden", activo);
     if (numberingHelp) numberingHelp.classList.toggle("hidden", activo);
     if (numeroInicialContainer) numeroInicialContainer.classList.toggle("hidden", activo);
+    if (tipoNumeracionLabel) {tipoNumeracionLabel.classList.toggle("hidden", activo);}
 
     // Fila pertenece exclusivamente a Playa especial + Por fila y nunca
     // debe quedar visible junto al selector de Escaneo Manual.
@@ -169,7 +170,7 @@ function aplicarModoEscaneoManual() {
 
     // El titulo general sigue siendo "Tipo de numeracion"; "Escaneo Manual"
     // es el nombre del sector con su switch, no reemplaza ese encabezado.
-    if (tipoNumeracionLabel) tipoNumeracionLabel.textContent = "Tipo de numeracion";
+    // if (tipoNumeracionLabel) tipoNumeracionLabel.textContent = "Tipo de numeracion";
 
     // Evita el parpadeo inicial mostrando por un instante el control
     // incorrecto antes de que JS determine Continua vs Pares/Impares.
