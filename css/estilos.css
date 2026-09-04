@@ -1566,7 +1566,7 @@ button:active {
    ========================================================= */
 .manual-location-row {
     margin-top: 0;
-    min-height: 126px;
+    min-height: 115px;
     align-items: start;
 }
 
