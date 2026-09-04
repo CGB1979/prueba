@@ -155,9 +155,26 @@ function aplicarModoEscaneoManual() {
     const controlesInicioRow = document.getElementById("controlesInicioRow");
     if (controlesInicioRow) controlesInicioRow.classList.toggle("manual-active", activo);
 
+    // En Continua, Asignacion Manual ocupa SIEMPRE la misma celda que
+    // Asignar a la inversa (columna derecha). Asi, ocultar Numero inicial
+    // no hace que el switch salte a la izquierda.
+    if (escaneoManualContainer) {
+        escaneoManualContainer.style.gridColumn = "2";
+        escaneoManualContainer.style.gridRow = "1";
+    }
+    if (inversaContainer) {
+        inversaContainer.style.gridColumn = "2";
+        inversaContainer.style.gridRow = "1";
+    }
+
     // El titulo general sigue siendo "Tipo de numeracion"; "Escaneo Manual"
     // es el nombre del sector con su switch, no reemplaza ese encabezado.
     if (tipoNumeracionLabel) tipoNumeracionLabel.textContent = "Tipo de numeracion";
+
+    // Evita el parpadeo inicial mostrando por un instante el control
+    // incorrecto antes de que JS determine Continua vs Pares/Impares.
+    const configGroup = document.getElementById("configNumeracionGroup");
+    if (configGroup) configGroup.classList.add("config-numeracion-ready");
 
     if (activo) {
         if (manualCarril && (!manualCarril.value || Number(manualCarril.value) < 1)) manualCarril.value = 1;

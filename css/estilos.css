@@ -219,6 +219,18 @@ input:focus {
     gap: 12px;
 }
 
+.config-numeracion-group {
+    visibility: hidden;
+}
+
+#configNumeracionGroup:not(.config-numeracion-ready) {
+    visibility: hidden;
+}
+
+#configNumeracionGroup.config-numeracion-ready {
+    visibility: visible;
+}
+
 .numbering-options {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1115,10 +1127,12 @@ button:disabled {
     margin-top: 0;
 }
 
-/* Conserva la primera columna reservada cuando la asignación manual está activa. */
-#controlesInicioRow.manual-active #numeroInicialContainer {
-    visibility: hidden;
-    display: block;
+/* Asignación Manual conserva exactamente la columna derecha del switch
+   de Asignar a la inversa, aunque Numero inicial quede oculto. */
+#controlesInicioRow #escaneoManualContainer,
+#controlesInicioRow #inversaContainer {
+    grid-column: 2;
+    grid-row: 1;
 }
 
 .manual-location-row input {
