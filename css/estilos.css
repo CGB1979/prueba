@@ -1150,7 +1150,7 @@ button:disabled {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-top: 15px;
+    margin-top: 13px;
     width: 100%;
     box-sizing: border-box;
 }
