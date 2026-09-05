@@ -73,7 +73,7 @@ body {
 }
 
 body {
-    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 button,
@@ -92,7 +92,7 @@ button {
 
 #app-shell {
     width: 100%;
-    min-height: 100vh;
+    min-height: 100dvh;
     background: #f5f7fa;
     padding-bottom: 30px;
 }
@@ -901,7 +901,7 @@ button:disabled {
 @media (max-width: 600px) {
 
     #app-shell {
-        min-height: 100vh;
+        min-height: 100dvh;
     }
 
     .app-header {
